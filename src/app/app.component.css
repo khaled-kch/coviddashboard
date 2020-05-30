@@ -1,0 +1,36 @@
+.indicator{
+    color:white;
+    padding: 10px;
+    font-weight: bold;
+}
+.map-pan{
+    background-color:rgb(48, 48, 48);
+
+}
+
+.statistics-pan{
+    background-color:black;
+    border-left: 2px solid rgb(39, 39, 39);
+
+}
+
+.header{
+    background-color:black;
+    color:white;
+    border-bottom: 2px solid rgb(39, 39, 39);
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+
+}
+
+.confirmed{
+ color: orange;
+}
+
+.recovered{
+    color:green;
+}
+.deaths{
+    color: red;
+}
