@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row header">        
             <div class="col-lg-3">
-                <h5 class="confirmed">CONFIRMED : <span *ngIf="!loading">{{data_global.Confirmed}}</span></h5>
+                <h5 class="confirmed">CONFIRMED : <span *ngIf="!loading">{{data_global.Confirmed|number}}</span></h5>
             </div>
             <div class="col-lg-3">
-                <h5 class="recovered">RECOVERED : <span *ngIf="!loading">{{data_global.Recovered}}</span></h5>
+                <h5 class="recovered">RECOVERED : <span *ngIf="!loading">{{data_global.Recovered|number}}</span></h5>
             </div>
             <div class="col-lg-3">
-                <h5 class="deaths">DEATHS : <span *ngIf="!loading">{{data_global.Deaths}}</span></h5>
+                <h5 class="deaths">DEATHS : <span *ngIf="!loading">{{data_global.Deaths|number}}</span></h5>
             </div>
             <div class="col-lg-3">
                 <h5 class="update"><span *ngIf="!loading">{{last_update|date:'medium'}}</span></h5>
