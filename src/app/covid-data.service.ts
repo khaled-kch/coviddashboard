@@ -9,9 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class CovidDataService {
   countryCoordUrl = 'assets/country_coord.csv';
 
-constructor(private http: HttpClient) { 
-  this.readCountryCoordCsv();
-}
+constructor(private http: HttpClient) {}
 
 url="https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/1/query?where=1%3D1&outFields=*&outSR=4326&f=json";
 
@@ -22,12 +20,7 @@ getCovidData():Observable<any>{
     );
 }
 
-readCountryCoordCsv():Observable<any> {
-     return this.http.get(this.countryCoordUrl,{responseType: 'text'})
-      .pipe(
-        catchError(this.handleError('readCountryCoordCsv'))
-      );
-  }
+
  /**
    * Handle Http operation that failed.
    * Let the app continue.
