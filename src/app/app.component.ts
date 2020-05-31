@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   last_update; 
   loading=true;
   countryCoordLoading=true;
-  topN=6;
+  topN=10;
   
   //options for geochart
   options = {
@@ -102,7 +102,6 @@ getCovidData(){
       
       data.features.forEach(element => {
         if(element.attributes.Last_Update!==null){
-
         // get update date
         this.last_update=new Date(element.attributes.Last_Update)
 
@@ -148,9 +147,9 @@ getCovidData(){
                                                 Recovered:this.data_recovered[elm_index][2],
                                                 Deaths:this.data_deaths[elm_index][2]}
                 
-                }} else{
-                  console.log(element.attributes.Country_Region)
-                }
+                }}
+      } else{
+        console.log(element)
       }});
       
       this.data_confirmed_chart=this.getTopNCountries(this.topN,this.data_country,'Confirmed');

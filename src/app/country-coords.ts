@@ -47,7 +47,7 @@ export const country_coord_table=[
      {Country_Region: "Cyprus", Latitude: "34.9823018", Longitude: "33.1451285"},
      {Country_Region: "Czechia", Latitude: "49.8167003", Longitude: "15.4749544"},
      {Country_Region: "Denmark", Latitude: "55.670249", Longitude: "10.3333283"},
-     {Country_Region: "Diamond Princess", Latitude: "53.8953584", Longitude: "27.5554078"},
+     {Country_Region: "Diamond Princess", Latitude: "35.444991", Longitude: "139.636768"},
      {Country_Region: "Djibouti", Latitude: "11.8145966", Longitude: "42.8453061"},
      {Country_Region: "Dominica", Latitude: "19.0974031", Longitude: "-70.3028026"},
      {Country_Region: "Dominican Republic", Latitude: "19.0974031", Longitude: "-70.3028026"},
