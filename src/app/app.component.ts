@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { CovidDataService } from './covid-data.service';
 import { Subscription } from 'rxjs';
+import {country_coord_table} from './country-coords';
 
 
 declare var google :any;
@@ -12,8 +13,6 @@ declare var google :any;
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  title = 'Covid 19';
-
   data_country:any[]=[]; //array for all data per country
   data_confirmed:any[]=[]; // array of confirmed cases per country
   data_recovered:any[]=[]; //array of recovered cases per country
@@ -22,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   data_confirmed_chart:any[]; //array compatible with column chart data for confirmed cases
   data_recovered_chart:any[]; //array compatible with column chart data for recovered cases
   data_deaths_chart:any[]; //array compatible with column chart data for dead cases
-  country_coord:any[]; //array of geo coordinates of countries
+  country_coord=country_coord_table; //array of geo coordinates of countries
   last_update; 
   loading=true;
   countryCoordLoading=true;
@@ -93,34 +92,18 @@ export class AppComponent implements OnInit, OnDestroy {
 constructor(private covidDataService: CovidDataService){}
 
 ngOnInit(){
-    //load country latitude and longitude array from assets
-    this.subsCoordData=this.covidDataService.readCountryCoordCsv().subscribe(
-      csvData=>{
-        let csvRecordsArray = (<string>csvData).split(/\r\n|\n/);
-        //get header
-        let csvArr = [];  
-        for (let i = 1; i < csvRecordsArray.length; i++) {  
-          if(csvRecordsArray[i]!==''){
-          let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
-          csvArr.push({Country_Region:curruntRecord[0],
-                        Latitude:curruntRecord[1],
-                        Longitude:curruntRecord[2]
-                      })
-        }}
-        this.country_coord=csvArr
-        this.countryCoordLoading=false;
-
-        //download covid data
-        this.getCovidData();
-      });
-
+    //download covid data
+    this.getCovidData();
 }
 
 getCovidData(){
   this.subsCovidData=this.covidDataService.getCovidData().subscribe(
     data=>{
+      
       data.features.forEach(element => {
         if(element.attributes.Last_Update!==null){
+
+        // get update date
         this.last_update=new Date(element.attributes.Last_Update)
 
         //build global object to count cases
@@ -165,7 +148,9 @@ getCovidData(){
                                                 Recovered:this.data_recovered[elm_index][2],
                                                 Deaths:this.data_deaths[elm_index][2]}
                 
-                }}
+                }} else{
+                  console.log(element.attributes.Country_Region)
+                }
       }});
       
       this.data_confirmed_chart=this.getTopNCountries(this.topN,this.data_country,'Confirmed');
