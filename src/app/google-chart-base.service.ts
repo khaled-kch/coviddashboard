@@ -8,8 +8,7 @@ declare var google:any;
 export class GoogleChartBaseService {
  
     constructor() { google.charts.load('current', 
-                                      {'packages':["geochart","corechart","bar"],
-                                      'mapsApiKey': 'AIzaSyAqJwdJbIV8mP51VhJzM123yF-g_ZGooUc'}); }
+                                      {'packages':["geochart","corechart","bar"]}); }
   
      protected buildGeoChart(data: any[], chartFunc: any, options: any) : void {
      var func = (chartFunc, options) => 
