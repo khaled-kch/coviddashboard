@@ -17,7 +17,7 @@
         <div class="col-lg-8 map-pan">
             <app-g-chart *ngIf="!loading" 
                                     [type]="'geochart'"
-                                    [data]="dataToDisplay"
+                                    [data]="data_confirmed"
                                     [options]="options"
                                     [elementId]="'covidMap'"></app-g-chart>
         </div>

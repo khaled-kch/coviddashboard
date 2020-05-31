@@ -31,12 +31,7 @@ export class GoogleChartBaseService {
 
      protected buildColumnChart(data: any[], chartFunc: any, options: any) : void {
       var func = (chartFunc, options) => {
-           // var datatable = google.visualization.arrayToDataTable(data,true);
-           var datatable = new google.visualization.DataTable();
-           datatable.addColumn('string', 'Country'); // Implicit domain label col.
-           datatable.addColumn('number', 'Cases'); // Implicit series 1 data col.
-           datatable.addRows(data)  
- 
+            var datatable = google.visualization.arrayToDataTable(data,false); 
            chartFunc().draw(datatable, options); 
            };   
       var callback = () => func(chartFunc, options);
